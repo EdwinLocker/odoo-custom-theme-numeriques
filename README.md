@@ -218,7 +218,7 @@ Les contributions sont les bienvenues !
 
 ## 🐛 Signaler un problème
 
-1. Vérifiez les [issues existantes](https://github.com/VOTRE_USERNAME/custom-theme-color-odoo/issues)
+1. Vérifiez les [issues existantes](https://github.com/EdwinLocker/odoo-custom-theme-numeriques/issues)
 2. Créez une nouvelle issue avec :
    - Description du problème
    - Capture d'écran si applicable
