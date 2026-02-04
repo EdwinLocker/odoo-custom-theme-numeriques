@@ -1,0 +1,93 @@
+// =============================================================================
+// PORTAL / FRONTEND - Interface client
+// =============================================================================
+// Portail client, pages publiques, site web
+// =============================================================================
+
+@import 'variables';
+@import 'common';
+
+// -----------------------------------------------------------------------------
+// HEADER / NAVBAR PORTAIL
+// -----------------------------------------------------------------------------
+
+.o_portal_navbar,
+header.o_cc,
+.o_header_standard {
+    background-color: $navbar-bg !important;
+    
+    // Liens dans le header
+    a {
+        color: $navbar-text !important;
+        
+        &:hover {
+            color: $color-secondary !important;
+        }
+    }
+}
+
+// Menu mobile portail
+.o_portal_navbar .navbar-toggler {
+    color: $navbar-text !important;
+}
+
+// -----------------------------------------------------------------------------
+// FOOTER
+// -----------------------------------------------------------------------------
+
+footer,
+.o_footer {
+    background-color: $footer-bg !important;
+    color: $footer-text;
+    
+    a {
+        color: $footer-text !important;
+        
+        &:hover {
+            color: $color-secondary !important;
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------
+// CONTENU PORTAIL
+// -----------------------------------------------------------------------------
+
+// Titres et sections
+.o_portal {
+    h1, h2, h3, h4, h5, h6 {
+        color: $color-primary;
+    }
+}
+
+// Cartes et blocs
+.o_portal_my_doc_table {
+    th {
+        background-color: $color-primary !important;
+        color: $color-white !important;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// TICKETS / HELPDESK PORTAIL
+// -----------------------------------------------------------------------------
+
+.o_portal_ticket {
+    .badge-primary {
+        background-color: $color-primary !important;
+    }
+}
+
+// -----------------------------------------------------------------------------
+// BREADCRUMB
+// -----------------------------------------------------------------------------
+
+.breadcrumb {
+    a {
+        color: $color-primary;
+        
+        &:hover {
+            color: $color-secondary;
+        }
+    }
+}
