@@ -4,26 +4,9 @@
 ![License](https://img.shields.io/badge/License-LGPL--3-green)
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
 
-
-<h2 align="center">Custom Theme Color: Changer la couleur violette par defaut de Odoo</h2>
-
-
-<p align="center">
-  <img
-    src="https://mrbotofficiel.com/wp-content/uploads/2025/09/Avant-custom_theme.webp"
-    alt="Avant Module Custom Theme"
-    width="500"
-  />
-  <img
-    src="https://mrbotofficiel.com/wp-content/uploads/2025/09/Apres-custom_theme.webp"
-    alt="Apres Module Custom Theme"
-    width="500"
-  />
-</p>
-
 ## 🎨 Description
 
-**Custom Theme Color Odoo** est un module qui permet de personnaliser facilement les couleurs de l'interface Odoo en remplaçant la couleur violette par défaut (`#875A7B`) par vos couleurs d'entreprise ou autres.
+**Custom Theme Color Odoo** est un module qui permet de personnaliser facilement les couleurs de l'interface Odoo en remplaçant la couleur violette par défaut (`#875A7B`) par vos couleurs d'entreprise.
 
 ### ✨ Fonctionnalités
 
@@ -32,19 +15,20 @@
 - ✅ Modification des couleurs dans les emails automatiques
 - ✅ Support des badges, tags et étiquettes
 - ✅ Compatible interface backend et frontend
-- ✅ Configuration centralisée via variables CSS
+- ✅ Architecture SCSS modulaire et maintenable
 - ✅ Compatible mode sombre/clair
 
 ### 🎯 Zones couvertes
 
+- Navbar et menus de navigation
 - Boutons principaux et secondaires
-- Liens et éléments de navigation
+- Liens et éléments interactifs
 - Pagination et contrôles
 - Formulaires et champs de saisie
 - Badges et indicateurs de statut
 - Tags et étiquettes
+- Header et footer du portail client
 - Templates d'emails
-- Barres de progression et indicateurs
 
 ## 📁 Structure du module
 
@@ -58,10 +42,23 @@ custom_theme/
 │   └── email_templates.xml
 └── static/
     └── src/
-        └── css/
-            ├── variables.css
-            └── custom.css
+        └── scss/
+            ├── _variables.scss   ← 🎨 MODIFIER ICI pour changer les couleurs
+            ├── _common.scss      ← Styles partagés (boutons, liens, forms)
+            ├── backend.scss      ← Interface admin Odoo
+            └── portal.scss       ← Interface client/portail
 ```
+
+### Architecture des fichiers SCSS
+
+| Fichier | Rôle | Quand modifier |
+|---------|------|----------------|
+| `_variables.scss` | Définitions des couleurs | Pour changer la charte graphique |
+| `_common.scss` | Boutons, liens, formulaires | Pour ajuster les styles communs |
+| `backend.scss` | Navbar, dashboard, admin | Pour personnaliser l'interface admin |
+| `portal.scss` | Header, footer, portail | Pour personnaliser l'interface client |
+
+> **Note** : Les fichiers préfixés par `_` sont des *partials* SCSS. Ils ne sont pas compilés seuls mais importés par les autres fichiers.
 
 ## 🚀 Installation
 
@@ -70,11 +67,13 @@ custom_theme/
 1. **Clonez le repository dans votre dossier addons :**
    ```bash
    cd /chemin/vers/odoo/addons
-   git clone https://github.com/Garconposey/custom-theme-color-odoo.git custom_theme
+   git clone https://github.com/VOTRE_USERNAME/custom-theme-color-odoo.git custom_theme
    ```
 
 2. **Redémarrez votre serveur Odoo :**
    ```bash
+   docker compose restart odoo
+   # ou
    ./odoo-bin -u all -d votre_base_de_donnees
    ```
 
@@ -92,122 +91,110 @@ custom_theme/
 
 ### 🎨 Personnaliser les couleurs
 
-**Option 1 : Modification des variables CSS (Recommandée)**
+Éditez **uniquement** le fichier `static/src/scss/_variables.scss` :
 
-Éditez le fichier `static/src/css/variables.css` :
+```scss
+// Couleurs principales - MODIFIER CES VALEURS
+$color-primary:    #0F343D;   // Votre couleur principale
+$color-secondary:  #FF6100;   // Votre couleur secondaire
 
-```css
-:root {
-    --custom-primary: #2DBAE8;      /* Votre couleur principale */
-    --custom-primary-dark: #024155; /* Version foncée pour les hover */
-    --custom-primary-light: #2DBAE854; /* Version claire/transparente */
-}
+// Couleurs complémentaires (optionnel)
+$color-beige:   #F6F5F1;
+$color-cafe:    #E1D8B8;
+$color-jaune:   #FDD860;
+$color-vert:    #C5FAD6;
+$color-violet:  #D9CDFF;
+$color-noir:    #262625;
 ```
 
-**Option 2 : Configuration via l'interface Odoo**
+Les couleurs dérivées (hover, focus) sont calculées automatiquement.
 
-Les couleurs peuvent aussi être modifiées via les paramètres système :
-- `custom_theme.color_primary`
-- `custom_theme.color_primary_dark` 
-- `custom_theme.color_primary_light`
+### 🎨 Exemples de palettes
 
-### 🎨 Exemples de palettes de couleurs
-
-```css
+```scss
 /* Bleu professionnel */
---custom-primary: #0066CC;
---custom-primary-dark: #004499;
+$color-primary: #0066CC;
+$color-secondary: #FF6B35;
 
 /* Vert moderne */
---custom-primary: #2ECC40;
---custom-primary-dark: #1F8B2C;
-
-/* Orange énergique */
---custom-primary: #FF6B35;
---custom-primary-dark: #E55A2B;
+$color-primary: #2ECC40;
+$color-secondary: #1F8B2C;
 
 /* Rouge corporate */
---custom-primary: #DC3545;
---custom-primary-dark: #C82333;
+$color-primary: #DC3545;
+$color-secondary: #FFC107;
 ```
 
-### 🔧 Personnalisation avancée
+## 🛠️ Personnalisation avancée
 
-Pour ajouter vos propres styles, éditez `static/src/css/custom.css` :
+### Modifier les styles backend
 
-```css
-/* Vos styles personnalisés */
-.mon-element-custom {
-    background-color: var(--custom-primary) !important;
-    color: white !important;
+Éditez `backend.scss` pour personnaliser l'interface admin :
+
+```scss
+// Exemple : changer la couleur du dashboard
+.o_home_menu {
+    background-color: $color-primary !important;
 }
 ```
 
-## 🛠️ Développement
+### Modifier les styles portail
 
-### Ajouter de nouveaux sélecteurs CSS
+Éditez `portal.scss` pour personnaliser l'interface client :
+
+```scss
+// Exemple : personnaliser les titres
+.o_portal h1 {
+    color: $color-secondary;
+}
+```
+
+### Ajouter de nouveaux sélecteurs
 
 Si certains éléments violets ne sont pas couverts :
 
 1. **Identifiez l'élément avec l'inspecteur (F12)**
-2. **Ajoutez le sélecteur dans `custom.css` :**
-   ```css
-   .nouveau-selecteur {
-       background-color: var(--custom-primary) !important;
-   }
-   ```
-
-### Structure des fichiers
-
-- **`variables.css`** : Variables CSS centralisées
-- **`custom.css`** : Styles de personnalisation
-- **`email_templates.xml`** : Styles pour les emails
-- **`color_config.xml`** : Configuration système
+2. **Ajoutez le sélecteur dans le fichier approprié** (`backend.scss` ou `portal.scss`)
 
 ## 🔍 Débogage
 
-### Technique d'identification des éléments violets
+### Identifier les éléments violets restants
 
-Ajoutez temporairement ce code dans `custom.css` pour faire clignoter les éléments violets :
+Ajoutez temporairement ce code dans `_common.scss` :
 
-```css
-@keyframes highlight-purple {
-    0% { border: 3px solid red; }
-    50% { border: 3px solid yellow; }
-    100% { border: 3px solid red; }
+```scss
+// Fait clignoter les éléments avec couleur violette hardcodée
+*[style*="#875A7B"] {
+    outline: 3px solid red !important;
+    animation: highlight-purple 1s infinite;
 }
 
-*[style*="#875A7B"] {
-    animation: highlight-purple 1s infinite !important;
+@keyframes highlight-purple {
+    0%, 100% { outline-color: red; }
+    50% { outline-color: yellow; }
 }
 ```
 
-## 🤝 Contribution
+### Vider le cache
 
-Les contributions sont les bienvenues ! 
-
-1. **Fork le projet**
-2. **Créez une branche pour votre fonctionnalité**
-   ```bash
-   git checkout -b feature/nouvelle-fonctionnalite
-   ```
-3. **Committez vos changements**
-   ```bash
-   git commit -m "Ajout d'une nouvelle fonctionnalité"
-   ```
-4. **Push vers la branche**
-   ```bash
-   git push origin feature/nouvelle-fonctionnalite
-   ```
-5. **Ouvrez une Pull Request**
+Après modification des fichiers SCSS :
+1. Videz le cache navigateur : `Cmd+Shift+R` (Mac) ou `Ctrl+Shift+R` (Windows)
+2. Redémarrez Odoo si nécessaire
 
 ## 📋 Compatibilité
 
-- **Odoo 18.0** ✅ Testé et validé
+- **Odoo 18.0** ⚠️ En cours de test
 - **Odoo 17.0** ⚠️ Devrait fonctionner (non testé)
 - **Odoo 16.0** ⚠️ Adaptations possibles requises
 
 ## 📝 Changelog
+
+### Version 2.0.0
+- 🔄 Refactoring complet avec architecture SCSS modulaire
+- ✅ Fichier de variables centralisé
+- ✅ Séparation backend / portal
+- ✅ Styles communs factorisés
+- ✅ Documentation améliorée
 
 ### Version 1.0.0
 - ✅ Remplacement couleur principale Odoo
@@ -219,26 +206,24 @@ Les contributions sont les bienvenues !
 
 Ce projet est sous licence LGPL-3. Voir le fichier `LICENSE` pour plus de détails.
 
-## 👤 Auteur
+## 🤝 Contribution
 
-- Email: info@auxilhouessou.com
-- GitHub: [@Garconposey](https://github.com/Garconposey)
+Les contributions sont les bienvenues ! 
+
+1. Fork le projet
+2. Créez une branche : `git checkout -b feature/ma-fonctionnalite`
+3. Committez : `git commit -m "Ajout de ma fonctionnalité"`
+4. Push : `git push origin feature/ma-fonctionnalite`
+5. Ouvrez une Pull Request
 
 ## 🐛 Signaler un problème
 
-Si vous rencontrez des problèmes ou avez des suggestions :
-1. **Vérifiez les [issues existantes](https://github.com/Garconposey/custom-theme-color-odoo/issues)**
-2. **Créez une nouvelle issue** avec :
+1. Vérifiez les [issues existantes](https://github.com/VOTRE_USERNAME/custom-theme-color-odoo/issues)
+2. Créez une nouvelle issue avec :
    - Description du problème
    - Capture d'écran si applicable
    - Version d'Odoo utilisée
    - Navigateur et version
-
-## 💡 Support
-
-- **Documentation** : Ce README
-- **Issues GitHub** : Pour les bugs et fonctionnalités
-- **Discussions** : Pour les questions générales
 
 ---
 
