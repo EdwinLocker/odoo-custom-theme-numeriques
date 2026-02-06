@@ -1,13 +1,40 @@
-/* =================================
-   VARIABLES CSS CENTRALISÉES
-   🎨 MODIFIEZ ICI POUR CHANGER TOUTES LES COULEURS
-   ================================= */
-:root {
-    --custom-primary: #2DBAE8;      /* Couleur principale */
-    --custom-primary-dark: #024155; /* Version foncée */
-    --custom-primary-light: #2DBAE854; /* Version claire */
+/* =============================================================================
+// VARIABLES CENTRALISÉES - NUMÉRIQUES THEME
+// =============================================================================
+// 🎨 MODIFIER UNIQUEMENT CE FICHIER POUR CHANGER LES COULEURS
+// Les autres fichiers importent ces variables automatiquement.
+// =============================================================================
 
-    /* Variable optionnelle pour la barre latérale du tableau de bord */
-    /* Changez 'inherit' par votre couleur si vous voulez personnaliser */
-    --dashboard-sidebar-bg: inherit; /* Garde la couleur par défaut */
+// -----------------------------------------------------------------------------
+// PALETTE NUMÉRIQUES (Charte graphique)
+// ----------------------------------------------------------------------------- */
+
+:root {
+  /* Couleurs principales */
+  --color-primary: #0f343d;
+  --color-secondary: #ff6100;
+
+  /* Couleurs dérivées */
+  --color-primary-dark: hsl(from var(--color-primary) h s calc(l - 15));
+  --color-primary-light: hsl(from var(--color-primary) h s calc(l + 15));
+  --color-secondary-dark: hsl(from var(--color-secondary) h s calc(l - 15));
+  --color-secondary-light: hsl(from var(--color-secondary) h s calc(l + 15));
+
+  /* Couleurs complémentaires */
+  --color-beige: #f6f5f1;
+  --color-cafe: #e1d8b8;
+  --color-jaune: #fdd860;
+  --color-vert: #c5fad6;
+  --color-violet: #d9cdff;
+  --color-noir: #262625;
+
+  /* Odoo brand override */
+  --o-brand-primary: var(--color-primary);
+  --o-brand-secondary: var(--color-secondary);
+  --o-brand-odoo: var(--color-primary);
+
+  /* Composants */
+  --btn-primary-bg: var(--color-secondary);
+  --link-color: var(--color-primary-light);
+  --link-hover: var(--color-secondary);
 }

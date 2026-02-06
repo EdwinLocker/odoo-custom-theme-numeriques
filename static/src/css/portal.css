@@ -1,0 +1,113 @@
+/* =============================================================================
+   PORTAL / FRONTEND - Interface client
+============================================================================= */
+
+@import "./variables.css";
+
+/* HEADER / NAVBAR PORTAIL */
+.o_portal_navbar,
+header.o_cc,
+.o_header_standard {
+  background-color: var(--color-primary) !important;
+}
+
+.o_portal_navbar a,
+header.o_cc a,
+.o_header_standard a {
+  color: var(--color-beige) !important;
+}
+
+.o_portal_navbar a:hover,
+header.o_cc a:hover,
+.o_header_standard a:hover {
+  color: var(--color-secondary) !important;
+}
+
+.o_portal_navbar .navbar-toggler {
+  color: var(--color-beige) !important;
+}
+
+/* BOUTONS */
+.btn-primary {
+  background-color: var(--color-secondary) !important;
+  border-color: var(--color-secondary) !important;
+  color: var(--color-beige) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: var(--color-secondary-dark) !important;
+  border-color: var(--color-secondary-dark) !important;
+}
+
+/* LIENS */
+a {
+  color: var(--color-primary);
+}
+
+a:hover {
+  color: var(--color-secondary);
+}
+
+/* FOOTER */
+footer,
+.o_footer {
+  background-color: var(--color-primary) !important;
+  color: var(--color-beige);
+}
+
+footer a,
+.o_footer a {
+  color: var(--color-beige) !important;
+}
+
+footer a:hover,
+.o_footer a:hover {
+  color: var(--color-secondary) !important;
+}
+
+/* CONTENU PORTAIL */
+.o_portal h1,
+.o_portal h2,
+.o_portal h3,
+.o_portal h4,
+.o_portal h5,
+.o_portal h6 {
+  color: var(--color-primary);
+}
+
+.o_portal_my_doc_table th {
+  background-color: var(--color-primary) !important;
+  color: var(--color-beige) !important;
+}
+
+/* TICKETS / HELPDESK PORTAIL */
+.o_portal_ticket .badge-primary {
+  background-color: var(--color-primary) !important;
+}
+
+/* BREADCRUMB */
+.breadcrumb a {
+  color: var(--color-primary);
+}
+
+.breadcrumb a:hover {
+  color: var(--color-secondary);
+}
+
+/* FORMULAIRES */
+.form-control:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 0.2rem rgba(15, 52, 61, 0.25) !important;
+}
+
+/* PAGINATION */
+.page-item.active .page-link {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+}
+
+.page-link {
+  color: var(--color-primary) !important;
+}
