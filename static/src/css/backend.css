@@ -1,15 +1,24 @@
 /* =============================================================================
-   BACKEND - Interface administration Odoo
+   BACKEND — Interface d'administration Odoo
+
+   Ce fichier applique les variables de couleur aux composants du backend Odoo.
+   ⚠️  NE PAS MODIFIER ce fichier pour changer les couleurs.
+       Éditer uniquement : custom_theme/static/src/css/variables.css
 ============================================================================= */
 
 @import "./variables.css";
 
-/* NAVBAR PRINCIPALE */
+
+/* =============================================================================
+   1. NAVBAR PRINCIPALE
+============================================================================= */
+
 .o_main_navbar {
   background: var(--color-cafe) !important;
-  border-bottom: 2px solid var(--color-primary) !important;
+  border-bottom: 1px solid var(--color-primary) !important;
 }
 
+/* Icônes et textes de la barre de navigation */
 .o_main_navbar .o_navbar_apps_menu .dropdown-toggle,
 .o_main_navbar .o_menu_brand,
 .o_main_navbar .dropdown-toggle:not(.o-dropdown-toggle-custo),
@@ -18,18 +27,23 @@
   color: var(--color-primary) !important;
 }
 
+/* Entrées du menu de navigation */
 .o_main_navbar .o_menu_sections .o_nav_entry,
 .o_main_navbar .o_menu_sections .dropdown-toggle {
-  background-color: var(--color-cafe) !important;
+  background: var(--color-cafe) !important;
   color: var(--color-primary) !important;
-  border-bottom: 2px solid var(--color-primary) !important;
+  border-bottom: 1px solid var(--color-primary) !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-top: 0 !important;
 }
 
+/* Survol et état actif */
 .o_main_navbar .o_menu_sections .o_nav_entry:hover,
 .o_main_navbar .o_menu_sections .dropdown-toggle:hover,
-.o_main_navbar .o_menu_sections .o_nav_entry:active, 
+.o_main_navbar .o_menu_sections .o_nav_entry:active,
 .o_main_navbar .o_menu_sections .dropdown-toggle:active {
-  background-color: rgba(0, 0, 0, 0.08);
+  background-color: rgba(0, 0, 0, 0.08) !important;
   color: var(--color-secondary) !important;
   border-bottom: 2px solid var(--color-primary) !important;
 }
@@ -39,26 +53,34 @@
   color: var(--color-secondary) !important;
 }
 
+/* Grille des applications */
 .o_navbar_apps_menu .dropdown-menu {
   background-color: var(--color-primary) !important;
 }
 
-.popover {
-  background-color: var(--color-cafe) !important;
-}
 
-/* Nav bar top */
+/* =============================================================================
+   2. MENUS ET NAVIGATION SECONDAIRE
+============================================================================= */
+
+/* Onglets actifs */
 .nav-tabs .nav-link.active,
 .nav-pills .nav-link.active {
   border-top-color: var(--color-primary) !important;
 }
 
+/* Items dropdown */
 .dropdown-item:hover {
   color: var(--color-secondary) !important;
 }
 
-/* Nav bar left */
-.o_base_settings_view .o_form_renderer .o_setting_container .settings_tab .tab:hover, 
+/* Popover */
+.popover {
+  background-color: var(--color-cafe) !important;
+}
+
+/* Panneau Paramètres — menu latéral */
+.o_base_settings_view .o_form_renderer .o_setting_container .settings_tab .tab:hover,
 .o_base_settings_view .o_form_renderer .o_setting_container .settings_tab .tab.selected {
   color: var(--color-secondary) !important;
 }
@@ -68,7 +90,11 @@
   box-shadow: inset 2px 0 0 var(--color-cafe) !important;
 }
 
-/* BOUTONS */
+
+/* =============================================================================
+   3. BOUTONS
+============================================================================= */
+
 .btn-primary,
 .o_form_button_save,
 .o_form_button_create,
@@ -86,15 +112,91 @@
   border-color: var(--color-secondary-dark) !important;
 }
 
-/* LIENS */
+/* État coché/actif des variantes de boutons */
+.btn-check:checked + .btn,
+:not(.btn-check) + .btn:active,
+.btn:first-child:active,
+.btn.active,
+.btn.show {
+  color: var(--color-primary) !important;
+  background-color: var(--color-secondary-light) !important;
+  border-color: var(--color-secondary) !important;
+}
+
+/* Boutons liens */
+.btn-link {
+  color: var(--color-primary) !important;
+}
+
 .btn-link:hover {
   color: var(--color-secondary) !important;
 }
 
-/* FORMULAIRES */
+
+/* =============================================================================
+   4. LIENS
+============================================================================= */
+
+a {
+  color: var(--color-primary) !important;
+}
+
+a:hover {
+  color: var(--color-secondary) !important;
+}
 
 
-/* PAGINATION */
+/* =============================================================================
+   5. FORMULAIRES
+============================================================================= */
+
+/* Focus sur les champs */
+.form-control:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 0.25rem rgba(var(--color-primary-rgb), 0.19) !important;
+}
+
+/* Checkboxes et boutons radio cochés */
+.form-check-input:checked {
+  background-color: var(--color-secondary) !important;
+  border-color: var(--color-secondary) !important;
+}
+
+/* Barre de statut des enregistrements */
+.o_field_statusbar > .o_statusbar_status,
+.o_field_statusbar_duration > .o_statusbar_status {
+  --o-statusbar-background-active: var(--color-secondary-light) !important;
+  --o-statusbar-border-active: var(--color-secondary) !important;
+}
+
+
+/* =============================================================================
+   6. BADGES ET TAGS
+============================================================================= */
+
+.badge.bg-primary,
+.badge.text-bg-primary,
+.o_tag.badge {
+  background-color: var(--color-primary) !important;
+  color: var(--color-beige) !important;
+}
+
+
+/* =============================================================================
+   7. ALERTES
+============================================================================= */
+
+.alert-primary {
+  background-color: rgba(var(--color-primary-rgb), 0.1) !important;
+  border-color: rgba(var(--color-primary-rgb), 0.3) !important;
+  color: var(--color-primary) !important;
+}
+
+
+/* =============================================================================
+   8. PAGINATION
+============================================================================= */
+
 .page-item.active .page-link {
   background-color: var(--color-primary) !important;
   border-color: var(--color-primary) !important;
@@ -104,18 +206,46 @@
   color: var(--color-primary) !important;
 }
 
-/* DASHBOARD / HOME MENU */
+
+/* =============================================================================
+   9. DASHBOARD / MENU D'ACCUEIL
+============================================================================= */
+
 .o_home_menu {
   background-color: var(--color-primary) !important;
 }
 
-/* FORMULAIRES BACKEND - Statistiques */
+/* Statistiques sur les formulaires */
 .o-form-buttonbox .o_pie_value,
 .o-form-buttonbox .oe_stat_button .o_stat_info .o_stat_value {
   color: var(--color-primary) !important;
 }
 
-/* CODE */
+
+/* =============================================================================
+   10. BARRES DE PROGRESSION
+============================================================================= */
+
+.progress-bar {
+  background-color: var(--color-secondary) !important;
+}
+
+
+/* =============================================================================
+   11. SÉLECTION DE TEXTE
+============================================================================= */
+
+::selection {
+  background-color: rgba(var(--color-primary-rgb), 0.2);
+  color: var(--color-noir);
+}
+
+
+/* =============================================================================
+   12. DIVERS
+============================================================================= */
+
+/* Code inline */
 code {
   color: var(--color-primary) !important;
 }

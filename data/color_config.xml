@@ -3,16 +3,16 @@
     <!-- Configuration centralisée des couleurs -->
     <record id="theme_color_primary" model="ir.config_parameter">
         <field name="key">custom_theme.color_primary</field>
-        <field name="value">#2E8B57</field>
+        <field name="value">#0f343d</field>
     </record>
     
     <record id="theme_color_primary_dark" model="ir.config_parameter">
         <field name="key">custom_theme.color_primary_dark</field>
-        <field name="value">#1F5F3F</field>
+        <field name="value">#051114</field>
     </record>
     
     <record id="theme_color_primary_light" model="ir.config_parameter">
         <field name="key">custom_theme.color_primary_light</field>
-        <field name="value">#4AA973</field>
+        <field name="value">#1e687a</field>
     </record>
 </odoo>

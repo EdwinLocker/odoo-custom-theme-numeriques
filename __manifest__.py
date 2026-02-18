@@ -5,7 +5,7 @@
     'license': 'LGPL-3',
     'depends': ['base', 'portal', 'web', 'mail', 'helpdesk_mgmt'],
     'name': 'Custom Theme Colors',
-    'version': '18.0.1.2.6',
+    'version': '18.0.1.3.0',
     'summary': 'Personnalisation des couleurs Odoo',
     'description': """
         Module pour personnaliser les couleurs de l'interface Odoo.

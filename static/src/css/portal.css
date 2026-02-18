@@ -1,10 +1,18 @@
 /* =============================================================================
-   PORTAL / FRONTEND - Interface client
+   PORTAL — Interface client Odoo (portail web)
+
+   Ce fichier applique les variables de couleur aux composants du portail Odoo.
+   ⚠️  NE PAS MODIFIER ce fichier pour changer les couleurs.
+       Éditer uniquement : custom_theme/static/src/css/variables.css
 ============================================================================= */
 
 @import "./variables.css";
 
-/* HEADER / NAVBAR PORTAIL */
+
+/* =============================================================================
+   1. HEADER / NAVBAR
+============================================================================= */
+
 .o_portal_navbar,
 header.o_cc,
 .o_header_standard {
@@ -27,7 +35,11 @@ header.o_cc a:hover,
   color: var(--color-beige) !important;
 }
 
-/* BOUTONS */
+
+/* =============================================================================
+   2. BOUTONS
+============================================================================= */
+
 .btn-primary {
   background-color: var(--color-secondary) !important;
   border-color: var(--color-secondary) !important;
@@ -41,7 +53,11 @@ header.o_cc a:hover,
   border-color: var(--color-secondary-dark) !important;
 }
 
-/* LIENS */
+
+/* =============================================================================
+   3. LIENS
+============================================================================= */
+
 a {
   color: var(--color-primary);
 }
@@ -50,7 +66,11 @@ a:hover {
   color: var(--color-secondary);
 }
 
-/* FOOTER */
+
+/* =============================================================================
+   4. FOOTER
+============================================================================= */
+
 footer,
 .o_footer {
   background-color: var(--color-primary) !important;
@@ -67,7 +87,12 @@ footer a:hover,
   color: var(--color-secondary) !important;
 }
 
-/* CONTENU PORTAIL */
+
+/* =============================================================================
+   5. CONTENU PORTAIL
+============================================================================= */
+
+/* Titres */
 .o_portal h1,
 .o_portal h2,
 .o_portal h3,
@@ -77,17 +102,13 @@ footer a:hover,
   color: var(--color-primary);
 }
 
+/* En-têtes de tableaux de documents (commandes, tickets, factures...) */
 .o_portal_my_doc_table th {
   background-color: var(--color-primary) !important;
   color: var(--color-beige) !important;
 }
 
-/* TICKETS / HELPDESK PORTAIL */
-.o_portal_ticket .badge-primary {
-  background-color: var(--color-primary) !important;
-}
-
-/* BREADCRUMB */
+/* Fil d'Ariane */
 .breadcrumb a {
   color: var(--color-primary);
 }
@@ -96,13 +117,21 @@ footer a:hover,
   color: var(--color-secondary);
 }
 
-/* FORMULAIRES */
+
+/* =============================================================================
+   6. FORMULAIRES
+============================================================================= */
+
 .form-control:focus {
   border-color: var(--color-primary) !important;
-  box-shadow: 0 0 0 0.2rem rgba(15, 52, 61, 0.25) !important;
+  box-shadow: 0 0 0 0.2rem rgba(var(--color-primary-rgb), 0.25) !important;
 }
 
-/* PAGINATION */
+
+/* =============================================================================
+   7. PAGINATION
+============================================================================= */
+
 .page-item.active .page-link {
   background-color: var(--color-primary) !important;
   border-color: var(--color-primary) !important;
@@ -110,4 +139,13 @@ footer a:hover,
 
 .page-link {
   color: var(--color-primary) !important;
+}
+
+
+/* =============================================================================
+   8. HELPDESK / TICKETS
+============================================================================= */
+
+.o_portal_ticket .badge-primary {
+  background-color: var(--color-primary) !important;
 }
