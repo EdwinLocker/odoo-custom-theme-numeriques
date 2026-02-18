@@ -127,40 +127,43 @@ Les variables Bootstrap 5 et Odoo sont écrasées dans `:root` pour une couvertu
 
 ## Procédure de mise à jour
 
-Après avoir modifié `variables.css`, suivre ces étapes **dans l'ordre** pour éviter les problèmes de cache :
+Après avoir modifié `variables.css`, suivre ces étapes **dans l'ordre** :
 
-```bash
-# 1. Incrémenter la version dans __manifest__.py
-#    ex. '18.0.1.3.0' → '18.0.1.3.1'
+**1. Incrémenter la version** dans `__manifest__.py`
+   - ex. `'18.0.1.3.0'` → `'18.0.1.3.1'`
+   - Cela force Odoo à recharger les assets du module
 
-# 2. Arrêter Odoo (évite les deadlocks)
-docker compose stop odoo
+**2. Mettre à niveau le module** dans l'interface Odoo
+   - **Apps** → chercher "Custom Theme Colors" → cliquer **Mettre à niveau**
 
-# 3. Mettre à jour le module
-docker compose run --rm odoo odoo -c /etc/odoo/odoo.conf -d postgres -u custom_theme --stop-after-init
+**3. Régénérer les assets**
+   - **Paramètres** → activer le **Mode développeur** (lien en bas de page)
+   - Menu développeur (icône 🐛) → **Régénérer les assets**
 
-# 4. Redémarrer Odoo
-docker compose start odoo
-```
-
-Ensuite, dans l'interface Odoo :
-1. Activer le **Mode développeur** (Paramètres → bas de page)
-2. Menu développeur (icône 🐛) → **Régénérer les assets**
-3. Vider le cache navigateur : `Ctrl+Shift+R` (Windows/Linux) ou `Cmd+Shift+R` (Mac)
+**4. Vider le cache navigateur**
+   - Windows/Linux : `Ctrl+Shift+R`
+   - Mac : `Cmd+Shift+R`
 
 ---
 
 ## Installation
 
+**1. Cloner le module** dans le dossier addons du serveur
+
 ```bash
-# Cloner dans le dossier addons
 cd /chemin/vers/odoo/addons
 git clone https://github.com/EdwinLocker/odoo-custom-theme-numeriques.git custom_theme
-
-# Mettre à jour la liste des modules et installer
-docker compose run --rm odoo odoo -c /etc/odoo/odoo.conf -d postgres -i custom_theme --stop-after-init
-docker compose start odoo
 ```
+
+**2. Redémarrer Odoo** pour qu'il détecte le nouveau module
+
+```bash
+docker compose restart odoo
+```
+
+**3. Installer le module** dans l'interface Odoo
+   - **Apps** → **Mettre à jour la liste des apps**
+   - Rechercher "Custom Theme Colors" → cliquer **Installer**
 
 ---
 
